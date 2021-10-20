@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+    <h1>Welcome to my Form</h1>
+
+    <div>
+        By submitting this form a file will be created with the filename + .txt and with the data in the textarea input in it. It will be created in src/files
+    </div>
+
+    <form id="form">
+        <label for="fileName">Enter file name</label>
+        <input id="fileName" />
+        <label for="data">Enter file data</label>
+        <textarea type="textarea" id="data" ></textarea>
+        <input type="submit" value="Submit" />
+    </form>
+
+
+<script>
+    $(document).ready(()=>{
+        console.log('Hello from jquery');
+        $('#form').submit((event)=>{
+            event.preventDefault();
+            console.log('Form submitted');
+            const fileName = $('#fileName').val();
+            const data = $('#data').val();
+            const toSend = fileName +"\r\n" + data;
+            console.log("dataToSend",toSend);
+
+            $.ajax({
+                url: './',
+                method:'POST',
+                dataType:'text',
+                data: toSend
+            })
+            .fail((error)=>{
+                alert("Failed creating file, check logs for errors");
+                console.error(error);
+            })
+        })
+    })
+</script>
+</body>
+</html>
