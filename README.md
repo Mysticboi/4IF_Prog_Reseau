@@ -16,7 +16,7 @@ Se placer sur _Chat-peer-to-peer/src_
 
 Lancer le serveur: `java stream.EchoServer 5000`
 
-Lancer un client: `java strem.EchoClient localhost 5000`
+Lancer un client: `java stream.EchoClient localhost 5000`
 
 ## Group-Chat
 
